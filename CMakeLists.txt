@@ -3,4 +3,5 @@ project(ThreadingAssignment)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ThreadingAssignment main.cpp)
+add_executable(ThreadingAssignment main.cpp
+        Thread.h)
