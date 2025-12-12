@@ -25,8 +25,11 @@ public:
      */
     int id();
 
-protected:
-    virtual void doWork() = 0; // worker function. Override downstream
+    virtual void doWork() = 0; // TODO: override downstream
+
+    pthread_t thread;
+
+    void* startRoutine(void* arg); // this might need to be static
 };
 
 #endif //THREADINGASSIGNMENT_THREAD_H
