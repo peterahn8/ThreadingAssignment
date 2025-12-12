@@ -6,6 +6,7 @@
 #define THREADINGASSIGNMENT_THREAD_H
 
 class Thread {
+public:
     /* "begins the work associated w/ the thread" */
     void start();
 
