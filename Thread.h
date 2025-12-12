@@ -5,6 +5,8 @@
 #ifndef THREADINGASSIGNMENT_THREAD_H
 #define THREADINGASSIGNMENT_THREAD_H
 
+#include "pthread.h"
+
 class Thread {
 public:
     /* "begins the work associated w/ the thread" */
@@ -22,6 +24,9 @@ public:
      * I don't know what type the ID could be yet. Returning an int for now
      */
     int id();
+
+protected:
+    virtual void doWork() = 0; // worker function. Override downstream
 };
 
 #endif //THREADINGASSIGNMENT_THREAD_H
