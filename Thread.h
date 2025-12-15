@@ -29,7 +29,7 @@ public:
 
     pthread_t thread;
 
-    void* startRoutine(void* arg); // this might need to be static
+    static void* startRoutine(void* arg);
 };
 
 #endif //THREADINGASSIGNMENT_THREAD_H
