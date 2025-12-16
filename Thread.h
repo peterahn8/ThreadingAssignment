@@ -5,7 +5,7 @@
 #ifndef THREADINGASSIGNMENT_THREAD_H
 #define THREADINGASSIGNMENT_THREAD_H
 
-#include "pthread.h"
+#include <pthread.h>
 
 class Thread {
 public:
@@ -30,6 +30,8 @@ public:
     pthread_t thread;
 
     static void* startRoutine(void* arg);
+
+    void join();
 };
 
 #endif //THREADINGASSIGNMENT_THREAD_H

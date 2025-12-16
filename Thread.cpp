@@ -3,7 +3,7 @@
 //
 
 #include "Thread.h"
-#include "pthread.h"
+#include <pthread.h>
 
 void Thread::start() {
     pthread_create(&thread, nullptr, startRoutine, this);
@@ -28,4 +28,8 @@ void* Thread::startRoutine(void* arg) {
     self->done();
 
     return nullptr;
+}
+
+void Thread::join() {
+    pthread_join(thread, nullptr);
 }
