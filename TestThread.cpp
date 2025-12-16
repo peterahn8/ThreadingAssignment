@@ -11,12 +11,12 @@
 
 class TestThread : public Thread {
 public:
-    GlobalState sharedState;
+    GlobalState globalState; // currently per thread. Fix this later
     void doWork() override {
         std::cout << "Hello from TestThread.\n";
-        sharedState.currentTotal += 1;
+        globalState.total += 1;
 
-        std::cout << sharedState.currentTotal;
+        std::cout << globalState.total;
     }
 };
 

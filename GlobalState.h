@@ -9,9 +9,9 @@
 #include <vector>
 
 struct GlobalState {
-    int globalTotal;
+    int total = 0;
     pthread_mutex_t mutex; // TODO: initialize mutex.. lock/unlock in doWork()
-    std::vector<int> threadTotals[5];
+    std::vector<int> perThreadTotals[5];
 };
 
 #endif //THREADINGASSIGNMENT_GLOBALSTATE_H
