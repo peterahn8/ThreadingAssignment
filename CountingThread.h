@@ -2,12 +2,18 @@
 #define THREADINGASSIGNMENT_COUNTINGTHREAD_H
 
 #include "Thread.h"
+#include "GlobalState.h"
 
 class CountingThread : public Thread {
 public:
-    int count = 0; // may need to be private field
+    CountingThread(GlobalState& globalState, int index);
+
+    int count = 0;
 
     void doWork() override;
+private:
+    GlobalState& _globalState;
+    int _index;
 };
 
 #endif //THREADINGASSIGNMENT_COUNTINGTHREAD_H
