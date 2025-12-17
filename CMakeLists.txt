@@ -6,5 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(ThreadingAssignment main.cpp
         Thread.h
         Thread.cpp
-        TestThread.cpp
+        CountingThread.h
+        CountingThread.cpp
         GlobalState.h)

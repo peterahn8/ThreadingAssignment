@@ -6,12 +6,11 @@
 #define THREADINGASSIGNMENT_GLOBALSTATE_H
 
 #include <pthread.h>
-#include <vector>
 
 struct GlobalState {
     int total = 0;
     pthread_mutex_t mutex; // TODO: initialize mutex.. lock/unlock in doWork()
-    std::vector<int> perThreadTotals[5];
+    int contributions[5] = {0, 0, 0, 0, 0};
 };
 
 #endif //THREADINGASSIGNMENT_GLOBALSTATE_H

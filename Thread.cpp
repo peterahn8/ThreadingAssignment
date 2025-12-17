@@ -2,8 +2,8 @@
 // Created by Peter Ahn on 12/11/25.
 //
 
-#include "Thread.h"
 #include <pthread.h>
+#include "Thread.h"
 
 void Thread::start() {
     pthread_create(&thread, nullptr, startRoutine, this);
