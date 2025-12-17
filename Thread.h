@@ -1,7 +1,3 @@
-//
-// Created by Peter Ahn on 12/11/25.
-//
-
 #ifndef THREADINGASSIGNMENT_THREAD_H
 #define THREADINGASSIGNMENT_THREAD_H
 

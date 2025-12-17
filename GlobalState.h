@@ -1,7 +1,3 @@
-//
-// Created by Peter Ahn on 12/15/25.
-//
-
 #ifndef THREADINGASSIGNMENT_GLOBALSTATE_H
 #define THREADINGASSIGNMENT_GLOBALSTATE_H
 

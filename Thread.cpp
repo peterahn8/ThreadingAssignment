@@ -1,7 +1,3 @@
-//
-// Created by Peter Ahn on 12/11/25.
-//
-
 #include <pthread.h>
 #include "Thread.h"
 
