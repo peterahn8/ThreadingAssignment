@@ -9,6 +9,10 @@ void Thread::stop() {
     stopRequested = true;
 }
 
+void Thread::join() {
+    pthread_join(thread, nullptr);
+}
+
 void Thread::done() {
 
 }
@@ -23,8 +27,4 @@ void* Thread::startRoutine(void* arg) {
     self->done();
 
     return nullptr;
-}
-
-void Thread::join() {
-    pthread_join(thread, nullptr);
 }

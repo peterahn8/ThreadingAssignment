@@ -5,7 +5,7 @@
 
 struct GlobalState {
     int total = 0;
-    pthread_mutex_t mutex; // TODO: initialize mutex.. lock/unlock in doWork()
+    pthread_mutex_t mutex;
     int contributions[5] = {0, 0, 0, 0, 0};
 };
 
