@@ -1,4 +1,5 @@
-#include <iostream>
+#include <array>
+#include <memory>
 #include "GlobalState.h"
 #include "CountingThread.h"
 
@@ -7,11 +8,14 @@ int main() {
 
     pthread_mutex_init(&globalState.mutex, nullptr); // initialize mutex
 
-    CountingThread thread0(globalState, 0);
-    thread0.start();
-    thread0.join();
+    // https://stackoverflow.com/questions/34989245/c-making-and-destroying-unique-ptr-pointer
+    std::array<std::unique_ptr<CountingThread>, 5> threads;
 
-    pthread_mutex_destroy(&globalState.mutex); // destroy mutex.. Not necessary with this short lifecycle, but docs recommended it
+    for (int i = 0; i < 5; ++i) { threads[i] = std::make_unique<CountingThread>(globalState, i); }
+    for (int i = 0; i < 5; ++i) { threads[i]->start(); }
+    for (int i = 0; i < 5; ++i) { threads[i]->join(); }
+
+    pthread_mutex_destroy(&globalState.mutex); // destroy mutex
 
     return 0;
 }
