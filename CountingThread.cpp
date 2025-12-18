@@ -6,5 +6,6 @@ CountingThread::CountingThread(GlobalState& globalState, int index)
 }
 
 void CountingThread::doWork() {
-    std::cout << "Hello from CountingThread.\n";
+    std::cout << "Hello from CountingThread " << _index << 
+    " (pthread id: " << id() << ")" << std::endl;
 }

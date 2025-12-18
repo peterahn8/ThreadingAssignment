@@ -2,6 +2,7 @@
 #define THREADINGASSIGNMENT_THREAD_H
 
 #include <pthread.h>
+#include <atomic>
 
 class Thread {
 public:
@@ -16,18 +17,18 @@ public:
      */
     void done();
 
-    /* "returns the unique id of that thread"
-     * I don't know what type the ID could be yet. Returning an int for now
-     */
-    int id();
+    /* "returns the unique id of that thread" */
+    pthread_t id();
+
+    void join();
 
     virtual void doWork() = 0; // TODO: override downstream
 
-    pthread_t thread;
-
     static void* startRoutine(void* arg);
 
-    void join();
+    std::atomic<bool> stopRequested = false; // https://stackoverflow.com/questions/62830569/boolean-stop-signal-between-threads
+private:
+    pthread_t thread;
 };
 
 #endif //THREADINGASSIGNMENT_THREAD_H

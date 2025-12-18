@@ -6,16 +6,15 @@ void Thread::start() {
 }
 
 void Thread::stop() {
-
+    stopRequested = true;
 }
 
 void Thread::done() {
 
 }
 
-int Thread::id() {
-    // TODO: whichever type gets returned by pthreads api
-    return 0;
+pthread_t Thread::id() {
+    return thread;
 }
 
 void* Thread::startRoutine(void* arg) {
