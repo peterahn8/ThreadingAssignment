@@ -24,12 +24,15 @@ void CountingThread::doWork() {
             break;
         }
 
-        _count += increment;
-        _globalState.total += increment;
+        // actually take the lesser of the two, so we don't overshoot the target on the last loop
+        int actual = std::min(increment, remaining);
+        _count += actual;
+        _globalState.total += actual;
 
         pthread_mutex_unlock(&_globalState.mutex);
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(1)); // the work is so fast/cheap that if I don't manually sleep the thread, then the same thread hogs the cpu
+        // the work is so fast/cheap that if I don't manually sleep the thread, then the same thread hogs the cpu
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 }
 
