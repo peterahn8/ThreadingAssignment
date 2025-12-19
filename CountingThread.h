@@ -8,7 +8,9 @@ class CountingThread : public Thread {
 public:
     CountingThread(GlobalState& globalState, int index);
 
+    void done() override;
     void doWork() override;
+
 private:
     GlobalState& _globalState;
     int _index;

@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <iostream>
 #include "Thread.h"
 
 void Thread::start() {
@@ -14,7 +15,7 @@ void Thread::join() {
 }
 
 void Thread::done() {
-
+    std::cout << "Thread " << id() << " done." << std::endl;
 }
 
 pthread_t Thread::id() {
