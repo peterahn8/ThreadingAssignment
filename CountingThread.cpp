@@ -6,11 +6,24 @@ CountingThread::CountingThread(GlobalState& globalState, int index)
 }
 
 void CountingThread::doWork() {
-    pthread_mutex_lock(&_globalState.mutex); // lock global state to prevent other threads from reading/writing it
 
-    std::cout << "Hello from CountingThread " << id() << std::endl;
+    while (!stopRequested) {
+        int step = 1;
 
-    pthread_mutex_unlock(&_globalState.mutex); // unlock global state
+        pthread_mutex_lock(&_globalState.mutex);
+
+        int remaining = 100 - _globalState.total;
+        if (remaining == 0) {
+            pthread_mutex_unlock(&_globalState.mutex);
+            stop();
+            break;
+        }
+
+        _count += step;
+        _globalState.total += step;
+
+        pthread_mutex_unlock(&_globalState.mutex);
+    }
 }
 
 void CountingThread::done() {
